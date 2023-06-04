@@ -13,7 +13,7 @@ import cors from 'cors';
 
 dotenv.config(); 
 const app = express();
-const port = 5000;
+const port = process.env.PORT;
 console.log("====================",process.env.DATABASE_URL)
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: 'postgres', 
