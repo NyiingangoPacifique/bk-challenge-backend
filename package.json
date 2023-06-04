@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start": "nodemon --exec ts-node src/app.ts",
+    "start": "npm run undomigrate && npm run migrate && nodemon --exec ts-node src/app.ts",
     "migrate": "sequelize db:migrate",
     "undomigrate": "sequelize db:migrate:undo:all",
     "seed": "sequelize db:seed:all",
