@@ -1,0 +1,11 @@
+{
+    "build": {
+      "commands": [
+        "npm install -g sequelize-cli",
+        "npm ci",
+        "npm run build",
+        "sequelize db:migrate"
+      ]
+    }
+  }
+  
