@@ -31,7 +31,7 @@ export const register = async (req: Request, res: Response) => {
     const user = await User.create({ name, email, phone, isAdmin, password: hashedPassword });
     console.log("%%%%%%%%%%%%",user)
     // Generate JWT token
-    const token = jwt.sign({ id: user.id }, SECRET_KEY, { expiresIn: '1h' });
+    const token = jwt.sign({ id: user.id }, SECRET_KEY, { expiresIn: '1d' });
 
     // Set the token as a cookie
     res.cookie('token', token, { httpOnly: true });
@@ -67,7 +67,7 @@ export const login = async (req: Request, res: Response) => {
         isAdmin: user.isAdmin,
       },
       SECRET_KEY,
-      { expiresIn: '1h' }
+      { expiresIn: '1d' }
     );
     // Set the token as a cookie
     res.cookie('token', token, { httpOnly: true });
