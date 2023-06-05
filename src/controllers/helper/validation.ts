@@ -43,7 +43,7 @@ export const validateUserInput = (data: any) => {
     if (!image || typeof image !== 'string') {
         errors.push('image is required and must be a string.');
     }
-    if (!stockQty || !decimalPat.test(stockQty)) {
+    if (!stockQty) {
         errors.push('stock is required and must be a number.');
     }
     if (!kgAcre || !decimalPat.test(kgAcre)) {

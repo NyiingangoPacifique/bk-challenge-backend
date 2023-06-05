@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import productController from '../controllers/ProductController';
-
+import {verifyAdmin} from '../middleware/authenticate';
 const router = Router();
 
 /**
@@ -115,7 +115,7 @@ router.get('/category/:category', productController.getProductsByCategory);
  *             schema:
  *               $ref: '#/components/schemas/Product'
  */
-router.post('/', productController.createProduct);
+router.post('/',verifyAdmin, productController.createProduct);
 
 /**
  * @swagger
@@ -144,7 +144,7 @@ router.post('/', productController.createProduct);
  *             schema:
  *               $ref: '#/components/schemas/Product'
  */
-router.put('/:id', productController.updateProduct);
+router.put('/:id',verifyAdmin, productController.updateProduct);
 
 /**
  * @swagger
@@ -170,6 +170,6 @@ router.put('/:id', productController.updateProduct);
  *                 message:
  *                   type: string
  */
-router.delete('/:id', productController.deleteProduct);
+router.delete('/:id',verifyAdmin, productController.deleteProduct);
 
 export default router;
